@@ -61,7 +61,7 @@ const Navbar = () => {
         <li>
           <NavLink
             to="/sign-in"
-            className={({ isActive }) => isActive ? activeStyle : undefined }
+            className={({ isActive }) => isActive ? activeStyle : undefined}
             onClick={() => handleSignOut()}>
             Sign in
           </NavLink>
@@ -141,11 +141,12 @@ const Navbar = () => {
       </ul>
       <ul className='flex items-center gap-3'>
         {renderView()}
-        <li className='flex items-center'>
+        <li className='flex items-center' onClick={() => { context.openCheckoutSideMenu() }
+        }>
           <ShoppingCart />
         </li>
       </ul>
-    </nav>
+    </nav >
   )
 }
 

@@ -16,7 +16,7 @@ const CheckoutSideMenu = () => {
 
   const handleCheckout = () => {
     const orderToAdd = {
-      date: '01.02.23',
+      date: context.date,
       products: context.cartProducts,
       totalProducts: context.cartProducts.length,
       totalPrice: totalPrice(context.cartProducts)
@@ -25,13 +25,14 @@ const CheckoutSideMenu = () => {
     context.setOrder([...context.order, orderToAdd])
     context.setCartProducts([])
     context.setSearchByTitle(null)
+    context.closeCheckoutSideMenu()
   }
 
   return (
     <aside
-      className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu flex-col fixed right-0 border border-black rounded-lg bg-white`}>
-      <div className='flex justify-between items-center p-6'>
-        <h2 className='font-medium text-xl'>My Order</h2>
+      className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu  scrollable-cards flex flex-col fixed right-2 border border-slate-300 rounded-lg bg-white mt-1`}>
+      <div className='flex flex-row justify-between items-center px-5 py-4'>
+        <h2 className='font-medium text-xl pl-2'>My Order</h2>
         <div>
           <XMarkIcon
             className='h-6 w-6 text-black cursor-pointer'
@@ -52,8 +53,8 @@ const CheckoutSideMenu = () => {
           ))
         }
       </div>
-      <div className='px-6 mb-6'>
-        <p className='flex justify-between items-center mb-2'>
+      <div className='bg-white mt-1 p-6 pt-2  rounded-lg'>
+        <p className='flex justify-between items-center pb-2 '>
           <span className='font-light'>Total:</span>
           <span className='font-medium text-2xl'>${totalPrice(context.cartProducts)}</span>
         </p>
